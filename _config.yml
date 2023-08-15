@@ -1,0 +1,9 @@
+# User config
+title: "interesting-places"
+
+# Site config
+baseurl: "/interesting-places"
+highlighter: rouge
+sass:
+  sass_dir: assets/scss
+  style: compressed

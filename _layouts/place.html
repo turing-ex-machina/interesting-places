@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{{ site.title }}</title>
+	{% include head.html %}
+</head>
+<body>
+	{% include header.html %}
+	<main class="content">
+		<section class="place">
+			<div class="container">
+				<article>
+					<span class="h2">Nome</span>
+					<h1>
+						<a href="{{ page.place.url }}" target="_blank" title="{{ page.place.title }}" rel="nofollow">{{ page.place.name }}</a>
+					</h1>
+					<span class="h2">Descrição</span>
+					{{ page.content }}
+				</article>
+				<aside>
+					<ul>
+						{% for image in page.images %}
+						<li>
+							<img src="{{ image.url | prepend: site.baseurl }}" alt="{{ image.alt }}" />
+						</li>
+						{% endfor %}
+					</ul>
+				</aside>
+			</div>
+		</section>
+		<section class="place-navigation">
+			<div class="container">
+				{% if page.previous and page.previous.categories contains "places" %}
+				<a title="Previous {{ page.previous.place.title }}" href="{{ page.previous.url | prepend: site.baseurl }}" class="prev">
+					<span class="h2">Previous</span>
+					<h2>{{ page.previous.place.title }}</h2>
+				</a>
+				{% endif %}
+				{% if page.next and page.next.categories contains "places" %}
+				<a title="Next {{ page.next.place.title }}" href="{{ page.next.url | prepend: site.baseurl }}" class="next">
+					<span class="h2">Next</span>
+					<h2>{{ page.next.place.title }}</h2>
+				</a>
+				{% endif %}
+			</div>
+		</section>
+	</main>
+	{% include footer.html %}
+	<script src="{{ "/assets/scripts/vendor/jquery-1.12.4.min.js" | prepend: site.baseurl }}"></script>
+	<script src="{{ "/assets/scripts/vendor/scrollreveal.min.js" | prepend: site.baseurl }}"></script>
+	<script src="{{ "/assets/scripts/vendor/sticky-kit.min.js" | prepend: site.baseurl }}"></script>
+	<script src="{{ "/assets/scripts/place.js" | prepend: site.baseurl }}"></script>
+</body>
+</html>
